@@ -9,8 +9,3 @@ spring:
     username: admin
     password: admin_password
     driver-class-name: com.mysql.cj.jdbc.Driver
-doma:
-  dialect: mysql
-  data-source-name: jdbc:mysql://localhost:3306/oshiel_db?user=admin&password=admin_password
-  exception-sql-log-type: formatted
-  jdbc-logger: slf4j

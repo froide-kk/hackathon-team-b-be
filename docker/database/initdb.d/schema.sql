@@ -84,4 +84,4 @@ CREATE TABLE `topic` (
   `createdate` datetime NOT NULL,
   `updatedate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`oshiel_id`,`topic_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;c
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
