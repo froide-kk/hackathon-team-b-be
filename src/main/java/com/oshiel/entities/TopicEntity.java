@@ -19,18 +19,19 @@ import java.util.Date;
 public class TopicEntity {
 
     /**
+     * トピックID
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "topic_id")
+    private Integer topicId;
+
+    /**
      * oshiel会員ID
      */
     @Id
     @Column(name = "oshiel_id")
     private Integer oshielId;
-
-    /**
-     * トピックID
-     */
-    @Id
-    @Column(name = "topic_id")
-    private Integer topicId;
 
     /**
      * トピック

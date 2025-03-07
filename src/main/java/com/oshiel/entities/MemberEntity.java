@@ -20,6 +20,7 @@ public class MemberEntity {
      * oshiel会員ID
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "oshiel_id")
     private Integer oshielId;
 

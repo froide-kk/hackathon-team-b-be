@@ -22,6 +22,7 @@ public class FavoriteArticleEntity {
      * お気に入り記事ID
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "favorite_article_id")
     private Integer favoriteArticleId;
 

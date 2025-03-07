@@ -20,6 +20,7 @@ public class ArticleEntity {
      * 記事ID
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "article_id")
     private Integer article_id;
 

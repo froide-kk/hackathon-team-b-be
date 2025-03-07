@@ -22,6 +22,7 @@ public class NotificationArticleEntity {
      * 通知記事ID
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "notification_article_id")
     private Integer notificationArticleId;
 
