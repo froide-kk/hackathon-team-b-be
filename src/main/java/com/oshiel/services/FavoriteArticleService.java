@@ -20,7 +20,11 @@ public class FavoriteArticleService {
       this.favoriteArticleRepository = favoriteArticleRepository;
   }
 
-  // ユーザーをIDで検索するメソッド
+  /**
+   * お気に入り記事を取得
+   * @param oshielId oshiel会員ID
+   * @return お気に入り記事一覧
+   */
   public FavoriteArticleBean getByOshielId(String oshielId) {
     List<ArticleEntity> ArticleList = favoriteArticleRepository.findByOshielId(Integer.valueOf(oshielId)).stream()
     .map(FavoriteArticleEntity::getArticle)
