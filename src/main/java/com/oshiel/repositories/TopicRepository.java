@@ -1,6 +1,5 @@
 package com.oshiel.repositories;
 
-import com.oshiel.entities.MemberEntity;
 import com.oshiel.entities.TopicEntity;
 import com.oshiel.entities.primaries.TopicPrimary;
 import org.springframework.data.jpa.repository.JpaRepository;
