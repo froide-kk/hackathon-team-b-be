@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.net.URL;
+import java.util.Date;
 
 @Service
 public class JwtValidatorService {
@@ -46,7 +47,19 @@ public class JwtValidatorService {
         JWTClaimsSet claims = signedJWT.getJWTClaimsSet();
 
         // 有効期限の検証
+        Date expirationTime = claims.getExpirationTime();
+        if(expirationTime == null){
+            throw new Exception("JWT does not have an expiration time (exp) claim");
+        }
+        if (new Date().after(expirationTime)) {
+            throw new Exception("JWT has expired");
+        }
+
         // 発行者の検証
+        String issuer = claims.getIssuer();
+        if(issuer == null || !issuer.equals("https://slack.com")){
+            throw new Exception("Invalid JWT issuer: " + issuer);
+        }
 
         log.info("JWTの検証に成功");
         return claims;
