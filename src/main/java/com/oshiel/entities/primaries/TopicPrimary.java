@@ -1,7 +1,5 @@
 package com.oshiel.entities.primaries;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 /**

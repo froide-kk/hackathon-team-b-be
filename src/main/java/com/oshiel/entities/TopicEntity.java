@@ -1,6 +1,5 @@
 package com.oshiel.entities;
 
-import com.oshiel.entities.primaries.NotificationArticlePrimary;
 import com.oshiel.entities.primaries.TopicPrimary;
 import jakarta.persistence.*;
 import lombok.Data;
