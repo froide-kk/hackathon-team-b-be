@@ -28,10 +28,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.5.0'
-	annotationProcessor 'org.seasar.doma:doma-processor:2.46.0'
-	implementation 'org.seasar.doma:doma-slf4j:2.46.0'
 	implementation 'mysql:mysql-connector-java:8.0.25'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
