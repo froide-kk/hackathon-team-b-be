@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: oshiel_mysql
+    environment:
+      MYSQL_DATABASE: oshiel_db
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin_password
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Tokyo
+    volumes:
+      - ./docker/database/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./docker/database/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
