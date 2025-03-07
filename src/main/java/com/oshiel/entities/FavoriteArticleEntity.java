@@ -24,21 +24,29 @@ public class FavoriteArticleEntity {
      */
     @Id
     @Column(name = "favorite_article_id")
-    private String favoriteArticleId;
+    private Integer favoriteArticleId;
 
     /**
      * 記事ID
      */
     @Id
     @Column(name = "article_id")
-    private String articleId;
+    private Integer articleId;
 
     /**
      * oshiel会員ID
      */
     @Id
     @Column(name = "oshiel_id")
-    private String oshielId;
+    private Integer oshielId;
+
+    @ManyToOne
+    @JoinColumn(name = "oshiel_id", referencedColumnName = "oshiel_id")
+    private MemberEntity member;
+
+    @ManyToOne
+    @JoinColumn(name = "article_id", referencedColumnName = "article_id")
+    private ArticleEntity article;
 
     /**
      * コメント
@@ -65,5 +73,4 @@ public class FavoriteArticleEntity {
     @LastModifiedDate
     @Column(name = "updatedate")
     private Date updateDate;
-
 }

@@ -22,7 +22,7 @@ public class MemberEntity {
      */
     @Id
     @Column(name = "oshiel_id")
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * slackID

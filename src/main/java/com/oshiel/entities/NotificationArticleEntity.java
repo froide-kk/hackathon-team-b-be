@@ -24,21 +24,21 @@ public class NotificationArticleEntity {
      */
     @Id
     @Column(name = "notification_article_id")
-    private String notificationArticleId;
+    private Integer notificationArticleId;
 
     /**
      * 記事ID
      */
     @Id
     @Column(name = "article_id")
-    private String articleId;
+    private Integer articleId;
 
     /**
      * oshiel会員ID
      */
     @Id
     @Column(name = "oshiel_id")
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * CREATE日時

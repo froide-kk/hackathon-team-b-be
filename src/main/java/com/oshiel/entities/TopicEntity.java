@@ -24,20 +24,20 @@ public class TopicEntity {
      */
     @Id
     @Column(name = "oshiel_id")
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * トピックID
      */
     @Id
     @Column(name = "topic_id")
-    private String topicId;
+    private Integer topicId;
 
     /**
      * トピック
      */
     @Column(name = "topic_detail")
-    private Date topicDetail;
+    private String topicDetail;
 
     /**
      * CREATE日時
