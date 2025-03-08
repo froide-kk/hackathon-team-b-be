@@ -1,8 +1,6 @@
 package com.oshiel.beans;
 
 import java.util.List;
-
-import com.oshiel.entities.ArticleEntity;
 import lombok.Data;
 
 /**
@@ -18,6 +16,6 @@ public class FavoriteArticleBean {
     /**
      * お気に入り記事ID
      */
-    private List<ArticleEntity> article;
+    private List<ArticleBean> article;
 
 }
