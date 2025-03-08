@@ -5,7 +5,6 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.util.Date;
 
 /**
@@ -21,8 +20,9 @@ public class MemberEntity {
      * oshiel会員ID
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "oshiel_id")
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * slackID

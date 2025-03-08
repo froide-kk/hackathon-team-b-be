@@ -11,11 +11,11 @@ public class TopicPrimary {
     /**
      * oshiel会員ID
      */
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * トピックID
      */
-    private String topicId;
+    private Integer topicId;
 
 }

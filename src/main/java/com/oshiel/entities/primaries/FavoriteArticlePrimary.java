@@ -11,7 +11,7 @@ public class FavoriteArticlePrimary {
     /**
      * お気に入り記事ID
      */
-    private String favoriteArticleId;
+    private Integer favoriteArticleId;
 
     /**
      * oshiel会員ID
