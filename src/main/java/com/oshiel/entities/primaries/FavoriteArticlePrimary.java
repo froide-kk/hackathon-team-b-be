@@ -1,7 +1,5 @@
 package com.oshiel.entities.primaries;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 /**
@@ -13,7 +11,7 @@ public class FavoriteArticlePrimary {
     /**
      * お気に入り記事ID
      */
-    private String favoriteArticleId;
+    private Integer favoriteArticleId;
 
     /**
      * oshiel会員ID

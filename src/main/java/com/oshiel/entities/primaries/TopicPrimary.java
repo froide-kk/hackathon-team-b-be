@@ -1,7 +1,5 @@
 package com.oshiel.entities.primaries;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 import lombok.Data;
 
 /**
@@ -13,11 +11,11 @@ public class TopicPrimary {
     /**
      * oshiel会員ID
      */
-    private String oshielId;
+    private Integer oshielId;
 
     /**
      * トピックID
      */
-    private String topicId;
+    private Integer topicId;
 
 }
