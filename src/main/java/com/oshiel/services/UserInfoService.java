@@ -22,7 +22,7 @@ public class UserInfoService {
         this.memberRepository = memberRepository;
     }
 
-    public void saveUserInfo(JWTClaimsSet claims, String accessToken) throws ParseException {
+    public MemberEntity saveUserInfo(JWTClaimsSet claims, String accessToken) throws ParseException {
 
         // JWTからユーザー情報を取得
         String userId = claims.getStringClaim("sub");
@@ -32,15 +32,14 @@ public class UserInfoService {
 
         Optional<MemberEntity> member = memberRepository.findBySlackId(userId);
 
+        MemberEntity user = new MemberEntity();
+
         // ユーザーが存在するかチェック
         if (!member.isPresent()) {
-            MemberEntity user = new MemberEntity();
-
             user.setSlackId(userId);
             user.setSlackExpire(expirationTime);
             user.setSlackToken(accessToken);
             user.setNotificationFlag(0);
-
 
             user.setCreateDate(now);
             user.setUpdateDate(now);
@@ -50,5 +49,6 @@ public class UserInfoService {
 
         log.info("ユーザー情報: userid={}", userId);
 
+        return user;
     }
 }

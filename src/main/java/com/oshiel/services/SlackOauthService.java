@@ -21,7 +21,7 @@ public class SlackOauthService {
     private String clientId;
     @Value("${slack.client.secret}")
     private String clientSecret;
-    public static final String SLACK_REDIRECT_URI = "https://fa0a-182-169-133-143.ngrok-free.app/login";
+    public static final String SLACK_REDIRECT_URI = "https://75a0-182-169-133-143.ngrok-free.app/login";
     public static final String SLACK_ACCESS_TOKEN_URL = "https://slack.com/api/openid.connect.token";
 
     private static final Logger log = LoggerFactory.getLogger(SlackOauthService.class);
