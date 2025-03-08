@@ -15,6 +15,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // /login時は未認証でもアクセス許可、それ以外は認証状態を必須
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/*").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
