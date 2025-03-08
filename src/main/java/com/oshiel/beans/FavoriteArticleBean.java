@@ -1,6 +1,7 @@
 package com.oshiel.beans;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
@@ -11,6 +12,7 @@ public class FavoriteArticleBean {
     /**
      * oshiel会員ID
      */
+    @JsonProperty("oshiel_id")
     private Integer oshielId;
 
     /**
