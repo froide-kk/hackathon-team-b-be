@@ -27,10 +27,10 @@ public class NewsAPIService {
     public List<NewsAPIResponseBean> getArticlesByNewsApi(String topic) {
         List<NewsAPIResponseBean> response = null;
         try {
-            return this.newsApiClient.getNews(topic);
+            response =  this.newsApiClient.getNews(topic);
         } catch (Exception e) {
             e.printStackTrace();
-            return response;
         }
+        return response;
     }
 }
