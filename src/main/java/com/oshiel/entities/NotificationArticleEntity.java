@@ -1,6 +1,5 @@
 package com.oshiel.entities;
 
-import com.oshiel.entities.primaries.NotificationArticlePrimary;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -14,7 +13,6 @@ import java.util.Date;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@IdClass(NotificationArticlePrimary.class)
 @Table(name = "notification_article")
 public class NotificationArticleEntity {
 
@@ -29,16 +27,22 @@ public class NotificationArticleEntity {
     /**
      * 記事ID
      */
-    @Id
-    @Column(name = "article_id")
+    @Column(name = "article_id", insertable = false, updatable = false)
     private Integer articleId;
 
     /**
      * oshiel会員ID
      */
-    @Id
-    @Column(name = "oshiel_id")
+    @Column(name = "oshiel_id", insertable = false, updatable = false)
     private Integer oshielId;
+
+    @ManyToOne
+    @JoinColumn(name = "article_id", referencedColumnName = "article_id")
+    private ArticleEntity article;
+
+    @ManyToOne
+    @JoinColumn(name = "oshiel_id", referencedColumnName = "oshiel_id")
+    private MemberEntity member;
 
     /**
      * CREATE日時

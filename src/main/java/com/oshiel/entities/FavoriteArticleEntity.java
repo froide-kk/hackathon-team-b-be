@@ -1,6 +1,5 @@
 package com.oshiel.entities;
 
-import com.oshiel.entities.primaries.FavoriteArticlePrimary;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -14,7 +13,6 @@ import java.util.Date;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@IdClass(FavoriteArticlePrimary.class)
 @Table(name = "favorite_article")
 public class FavoriteArticleEntity {
 
@@ -29,15 +27,13 @@ public class FavoriteArticleEntity {
     /**
      * 記事ID
      */
-    @Id
-    @Column(name = "article_id")
+    @Column(name = "article_id", insertable = false, updatable = false)
     private Integer articleId;
 
     /**
      * oshiel会員ID
      */
-    @Id
-    @Column(name = "oshiel_id")
+    @Column(name = "oshiel_id", insertable = false, updatable = false)
     private Integer oshielId;
 
     @ManyToOne
