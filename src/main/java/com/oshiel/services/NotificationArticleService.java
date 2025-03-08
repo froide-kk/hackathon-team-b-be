@@ -32,7 +32,7 @@ public class NotificationArticleService {
         NotificationArticleReponseBean bean = new NotificationArticleReponseBean();
         List<Article> ArticleList = ArticleEntityList.stream().map(articleEntity -> {
             Article article = new Article();
-            article.setArticleId(articleEntity.getArticle_id());
+            article.setArticleId(articleEntity.getArticleId());
             article.setTitle(articleEntity.getTitle());
             article.setDescription(articleEntity.getDescription());
             article.setUrl(articleEntity.getUrl());

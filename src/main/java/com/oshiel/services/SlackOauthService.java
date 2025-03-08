@@ -21,7 +21,8 @@ public class SlackOauthService {
     private String clientId;
     @Value("${slack.client.secret}")
     private String clientSecret;
-    public static final String SLACK_REDIRECT_URI = "https://75a0-182-169-133-143.ngrok-free.app/login";
+    // SLACK_REDIRECT_URIは、最初に送信された URI (送信された場合) と一致する必要がある。
+    public static final String SLACK_REDIRECT_URI = "https://21e8-182-169-133-143.ngrok-free.app/redirect";
     public static final String SLACK_ACCESS_TOKEN_URL = "https://slack.com/api/openid.connect.token";
 
     private static final Logger log = LoggerFactory.getLogger(SlackOauthService.class);
@@ -30,6 +31,9 @@ public class SlackOauthService {
 
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper mapper = new ObjectMapper();
+
+
+        log.info("認可コード：{}", code);
 
         // リクエスト作成
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -47,7 +51,7 @@ public class SlackOauthService {
         ResponseEntity<String> response = restTemplate.postForEntity(SLACK_ACCESS_TOKEN_URL, request, String.class);
         String tokenBody = response.getBody();
 
-        log.info("レスポンストークン : {}", tokenBody);
+        log.info("レスポンストークン : {}", response.getBody());
 
         JsonNode json;
         try{
