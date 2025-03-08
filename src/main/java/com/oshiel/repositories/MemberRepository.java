@@ -13,4 +13,12 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
     Optional<MemberEntity> findBySlackId(String slackId);
+
+    /**
+     * 会員情報取得
+     * @param id oshiel会員ID
+     * @return 会員情報
+     */
+    public MemberEntity findByOshielId(Integer id);
+
 }

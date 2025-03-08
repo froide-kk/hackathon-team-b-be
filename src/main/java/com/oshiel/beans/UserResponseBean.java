@@ -1,16 +1,14 @@
 package com.oshiel.beans;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
- * お気に入り記事一覧
+ * ユーザリクエスト
  */
 @Data
-public class FavoriteArticleBean {
+public class UserResponseBean {
+
     /**
      * oshiel会員ID
      */
@@ -18,9 +16,8 @@ public class FavoriteArticleBean {
     private Integer oshielId;
 
     /**
-     * お気に入り記事
+     * トピック
      */
-    @NotNull
-    private List<ArticleBean> articles;
-
+    @JsonProperty("topic")
+    private String topic;
 }
