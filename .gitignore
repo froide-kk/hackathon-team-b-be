@@ -6,3 +6,5 @@
 .gradle/
 /build/reports/problems/problems-report.html
 /build/*
+
+.env

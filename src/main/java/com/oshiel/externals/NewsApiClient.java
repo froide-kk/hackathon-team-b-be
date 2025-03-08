@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import com.oshiel.beans.NewsAPIResponseBean;
@@ -14,9 +15,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Component
 public class NewsApiClient {
 
-    private final String newsApikey = "f1610616944049acb929fe22507350a0";
-    ;
-    private final String newsApiEndpoint = "https://newsapi.org/v2/everything";
+    @Value("${news.api.key}")
+    private String newsApikey;
+    @Value("${news.api.endpoint}")
+    private String newsApiEndpoint;
 
     /**
      * 最新ニュース記事取得
