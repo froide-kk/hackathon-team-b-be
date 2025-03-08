@@ -9,10 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserSettingController {
@@ -35,10 +32,10 @@ public class UserSettingController {
      * @return ユーザ設定情報
      */
     @GetMapping(value = "/user/setting/{id}")
-    public ResponseEntity<UserSettingResponseBean> setting(@Valid @RequestBody UserSettingRequestBean bean) {
+    public ResponseEntity<UserSettingResponseBean> setting(@PathVariable Integer id) {
 
         HttpStatus status = HttpStatus.OK;
-        UserSettingResponseBean response = this.userSettingService.get(bean);
+        UserSettingResponseBean response = this.userSettingService.get(id);
 
         return new ResponseEntity<>(response, status);
     }
