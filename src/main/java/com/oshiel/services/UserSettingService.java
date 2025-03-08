@@ -20,9 +20,9 @@ public class UserSettingService {
         this.memberRepository = memberRepository;
     }
 
-    public UserSettingResponseBean get(UserSettingRequestBean bean){
+    public UserSettingResponseBean get(Integer id){
         UserSettingResponseBean response = new UserSettingResponseBean();
-        MemberEntity memberEntity = this.memberRepository.findByOshielId(bean.getOshielId());
+        MemberEntity memberEntity = this.memberRepository.findByOshielId(id);
 
         response.setOshielId(memberEntity.getOshielId());
         response.setNotificationFlag(memberEntity.getNotificationFlag());
