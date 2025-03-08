@@ -12,7 +12,7 @@ import com.oshiel.beans.FavoriteArticleBean;
 import com.oshiel.services.FavoriteArticleService;
 
 @RestController
-@RequestMapping("/bookmark/{oshielId}")
+@RequestMapping("/bookmark")
 public class FavoriteArticleController {
 
     private final FavoriteArticleService favoriteArticleService;
@@ -22,8 +22,8 @@ public class FavoriteArticleController {
         this.favoriteArticleService = favoriteArticleService;
     }
 
-    @GetMapping
-    public ResponseEntity<FavoriteArticleBean> getUser(@PathVariable String oshielId) {
+    @GetMapping("/{oshielId}")
+    public ResponseEntity<FavoriteArticleBean> getArticleList(@PathVariable String oshielId) {
         FavoriteArticleBean favoriteArticles = favoriteArticleService.getByOshielId(oshielId);
         return ResponseEntity.ok(favoriteArticles);
     }

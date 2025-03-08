@@ -1,7 +1,6 @@
 package com.oshiel.repositories;
 
 import com.oshiel.entities.TopicEntity;
-import com.oshiel.entities.primaries.TopicPrimary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * トピックリポジトリ
  */
 @Repository
-public interface TopicRepository extends JpaRepository<TopicEntity, TopicPrimary> {
+public interface TopicRepository extends JpaRepository<TopicEntity, Integer> {
 
 }

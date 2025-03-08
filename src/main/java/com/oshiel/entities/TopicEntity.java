@@ -1,6 +1,5 @@
 package com.oshiel.entities;
 
-import com.oshiel.entities.primaries.TopicPrimary;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -14,7 +13,6 @@ import java.util.Date;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@IdClass(TopicPrimary.class)
 @Table(name = "topic")
 public class TopicEntity {
 
@@ -29,9 +27,12 @@ public class TopicEntity {
     /**
      * oshiel会員ID
      */
-    @Id
-    @Column(name = "oshiel_id")
+    @Column(name = "oshiel_id", insertable = false, updatable = false)
     private Integer oshielId;
+
+    @ManyToOne
+    @JoinColumn(name = "oshiel_id", referencedColumnName = "oshiel_id")
+    private MemberEntity member;
 
     /**
      * トピック
