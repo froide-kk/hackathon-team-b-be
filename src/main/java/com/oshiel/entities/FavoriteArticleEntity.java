@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.util.Date;
 
 /**
@@ -44,29 +45,30 @@ public class FavoriteArticleEntity {
     @JoinColumn(name = "article_id", referencedColumnName = "article_id")
     private ArticleEntity article;
 
-    /**
-     * コメント
-     */
-    @Column(name = "comment")
-    private String comment;
+    // /**
+    //  * コメント
+    //  */
+    // @Column(name = "comment")
+    // private String comment;
 
-    /**
-     * 評価
-     */
-    @Column(name = "evaluation")
-    private String evaluation;
+    // /**
+    //  * 評価
+    //  */
+    // @Column(name = "evaluation")
+    // private String evaluation;
 
     /**
      * CREATE日時
      */
     @CreatedDate
-    @Column(name = "createdate", updatable = false)
+    @Column(name = "createdate", updatable = false, columnDefinition = "DATETIME(0)")
     private Date createDate;
 
     /**
      * UPDATE日時
      */
     @LastModifiedDate
-    @Column(name = "updatedate")
+    @Column(name = "updatedate", columnDefinition = "DATETIME(0)")
     private Date updateDate;
+
 }

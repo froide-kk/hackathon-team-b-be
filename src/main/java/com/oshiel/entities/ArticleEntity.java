@@ -1,10 +1,12 @@
 package com.oshiel.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.util.Date;
 
 /**
@@ -22,18 +24,20 @@ public class ArticleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "article_id")
-    private Integer article_id;
+    private Integer articleId;
 
     /**
      * タイトル
      */
     @Column(name = "title")
+    @NotBlank
     private String title;
 
     /**
      * URL
      */
     @Column(name = "url")
+    @NotBlank
     private String url;
 
     /**
@@ -52,20 +56,21 @@ public class ArticleEntity {
      * 公開日
      */
     @Column(name = "publishedAt")
+    @NotBlank
     private String publishedAt;
 
     /**
      * CREATE日時
      */
     @CreatedDate
-    @Column(name = "createdate", updatable = false)
+    @Column(name = "createdate", updatable = false, columnDefinition = "DATETIME(0)")
     private Date createDate;
 
     /**
      * UPDATE日時
      */
     @LastModifiedDate
-    @Column(name = "updatedate")
+    @Column(name = "updatedate", columnDefinition = "DATETIME(0)")
     private Date updateDate;
 
 }

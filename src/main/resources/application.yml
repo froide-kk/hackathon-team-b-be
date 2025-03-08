@@ -14,3 +14,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+slack:
+  client:
+    id: ${SLACK_CLIENT_ID}
+    secret: ${SLACK_CLIENT_SECRET}
