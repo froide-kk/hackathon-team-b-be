@@ -26,8 +26,6 @@ public class JwtTokenProvider {
     @Value("${slack.client.secret}")
     private String SECRET_KEY;
 
-    private final long EXPIRATION_TIME = 86400000; // 1日 (ミリ秒)
-
     public String createToken(Authentication authentication) {
         // ユーザーの詳細情報を取得
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -37,16 +35,10 @@ public class JwtTokenProvider {
                 .map(GrantedAuthority::getAuthority) // GrantedAuthorityをStringに変換
                 .collect(Collectors.toList());
 
-        // JWT トークンの発行日時と有効期限を設定
-        Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + EXPIRATION_TIME);
-
         // JWT トークンを生成
         return Jwts.builder()
                 .setSubject(userDetails.getUsername()) // ユーザー名を設定
                 .claim("roles", roles) // ロール情報を "roles" というクレームに追加
-                .setIssuedAt(now) // 発行日時を設定
-                .setExpiration(expiryDate) // 有効期限を設定
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY) // シグネチャの生成
                 .compact(); // トークンをコンパクトにして返す
     }

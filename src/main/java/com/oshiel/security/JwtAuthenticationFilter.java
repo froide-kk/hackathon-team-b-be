@@ -12,17 +12,20 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        log.info("検証開始");
 
         /**
          *   「oshiel」トークンの検証
@@ -43,6 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 JWKSet jwkSet = JWKSet.load(new URL("https://slack.com/openid/connect/keys"));
                 JWK jwk = jwkSet.getKeyByKeyId(keyId);
                 if (jwk == null) {
+                    log.error("署名検証用の鍵が見つかりません: " + keyId);
                     throw new Exception("署名検証用の鍵が見つかりません: " + keyId);
                 }
 
@@ -52,6 +56,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 // 署名の検証
                 if (!signedJWT.verify(verifier)) {
+                    log.error("JWTの署名検証に失敗しました");
                     throw new Exception("JWTの署名検証に失敗しました");
                 }
 
@@ -59,17 +64,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 JWTClaimsSet claims = signedJWT.getJWTClaimsSet();
 
                 // 有効期限の検証
-                Date expirationTime = claims.getExpirationTime();
-                if (expirationTime == null) {
-                    throw new Exception("JWT does not have an expiration time (exp) claim");
-                }
-                if (new Date().after(expirationTime)) {
-                    throw new Exception("JWT has expired");
-                }
+//                Date expirationTime = claims.getExpirationTime();
+//                if (expirationTime == null) {
+//                    throw new Exception("JWT does not have an expiration time (exp) claim");
+//                }
+//                if (new Date().after(expirationTime)) {
+//                    throw new Exception("JWT has expired");
+//                }
 
                 // 発行者の検証
                 String issuer = claims.getIssuer();
                 if (issuer == null || !issuer.equals("https://slack.com")) {
+                    log.error("Invalid JWT issuer: " + issuer);
                     throw new Exception("Invalid JWT issuer: " + issuer);
                 }
 
@@ -99,5 +105,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
          *   下記のメソッドを呼ぶことで、次のフィルターまたはコントローラに渡す
          */
         filterChain.doFilter(request, response);
+        log.info("検証終了");
     }
 }
