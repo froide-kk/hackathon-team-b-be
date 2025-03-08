@@ -2,17 +2,19 @@ package com.oshiel.beans;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+/**
+ * お気に入り記事一覧
+ */
 @Data
-public class ArticleBean {
+public class FavoriteArticleRequestBean {
     /**
-     * 記事ID
+     * oshiel会員ID
      */
-    @NotNull
-    @JsonProperty("article_id")
-    private Integer articleId;
+    @JsonProperty("oshiel_id")
+    @NotBlank
+    private Integer oshielId;
 
     /**
      * タイトル
@@ -47,3 +49,4 @@ public class ArticleBean {
     @NotBlank
     private String publishedAt;
 }
+
