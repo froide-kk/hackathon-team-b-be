@@ -27,7 +27,8 @@ public class SlackOauthController {
         this.userInfoService = userInfoService;
     }
 
-    @GetMapping("/")
+    // TODO セキュリティ上POSTの方が良い
+    @GetMapping("/login")
     public ResponseEntity<Map<String, Object>> oauthCallback(@RequestParam("code") String code) throws Exception {
 
         // 1. 認可コードからアクセストークンを取得
@@ -37,7 +38,7 @@ public class SlackOauthController {
         JWTClaimsSet jwtClaims = jwtValidatorService.validateIdToken(token.getIdToken());
 
         // 3. IDトークンからユーザー情報を取得
-        userInfoService.saveUserInfo(jwtClaims);
+        userInfoService.saveUserInfo(jwtClaims, token.getAccessToken());
 
 
         return ResponseEntity.ok(Map.of(
