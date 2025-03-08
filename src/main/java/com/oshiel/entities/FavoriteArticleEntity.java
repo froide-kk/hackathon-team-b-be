@@ -61,13 +61,14 @@ public class FavoriteArticleEntity {
      * CREATE日時
      */
     @CreatedDate
-    @Column(name = "createdate", updatable = false)
+    @Column(name = "createdate", updatable = false, columnDefinition = "DATETIME(0)")
     private Date createDate;
 
     /**
      * UPDATE日時
      */
     @LastModifiedDate
-    @Column(name = "updatedate")
+    @Column(name = "updatedate", columnDefinition = "DATETIME(0)")
     private Date updateDate;
+
 }
