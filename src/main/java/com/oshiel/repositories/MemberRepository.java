@@ -10,4 +10,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
 
+
+    /**
+     * 会員情報取得
+     * @param id oshiel会員ID
+     * @return 会員情報
+     */
+    public MemberEntity findByOshielId(Integer id);
+
 }
