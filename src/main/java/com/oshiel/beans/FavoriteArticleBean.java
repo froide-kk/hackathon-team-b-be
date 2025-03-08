@@ -1,7 +1,9 @@
 package com.oshiel.beans;
 
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 /**
@@ -16,8 +18,9 @@ public class FavoriteArticleBean {
     private Integer oshielId;
 
     /**
-     * お気に入り記事ID
+     * お気に入り記事
      */
-    private List<ArticleBean> article;
+    @NotNull
+    private List<ArticleBean> articles;
 
 }
