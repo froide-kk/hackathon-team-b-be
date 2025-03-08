@@ -76,7 +76,7 @@ public class MemberEntity {
         }
 
         if (notificationTime == null) {
-            notificationTime = "0900";
+            notificationTime = "9";
         }
     }
 
